@@ -1,6 +1,0 @@
- RewriteEngine On
-
-RewriteRule inicio ./index.php
-RewriteRule obrigado ./obrigado.php
-RewriteRule calculadora-de-financiamento ./calcule-seu-financiamento.php
-RewriteRule porto-carioca ./porto-carioca.php
