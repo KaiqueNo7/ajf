@@ -8,7 +8,7 @@
 <body>
 <div class="w100 js-btw al-center vh100 grey">
     <div class="w50 vh100 js-center mbl-none">
-        <img src="../img/05.jpg"class="img">
+        <img src="../img/login.jpg"class="img">
     </div>
     <div class="w50 js-center al-center p30 column">
         <img src="../img/logo.png" alt="logo AJF" class="logo-login">
