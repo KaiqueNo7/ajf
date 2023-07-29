@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<?php $raiz = ""; include'head.php'; ?>
+<?php $raiz = ""; include('components/head.php'); ?>
 </head>
 <style>
 	header {
@@ -11,7 +11,7 @@
 </style>
 <body>
 <header>
-<?php include 'header.php';  ?>
+<?php include('components/header.php');  ?>
 </header>
 <div class="js-center al-center column p30" style="min-height: 100vh; background: var(--grey);">
 	<div class="box-calculadora">
@@ -51,7 +51,7 @@
 
 			<form method="post" class="part-2 h100 js-ard column" id="part-2">
 				<div class="w100">
-					<h2>Calcule o seu financiamento</h2>
+					<h2>OK, <b id="name"></b>! Agora vamos calcular seu financiamento!</h2>
 					<p>Preencha os campos a baixo e simule as parcelas do seu imóvel:</p>
 				</div>
 				<div class="w100 js-btw al-start column">
@@ -91,12 +91,10 @@
     </div>
 	</div>
 
-<!--button class="btn-calc w25" type="button" name="calcular" value="calular" id="calular" onclick="calcularFin();">Calcular</button-->
-
-<?php include('footer.php'); ?>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
-<script src="calculadora-financiamento.js"></script>
+<?php include('components/footer.php'); ?>
+<script src="js/jquery-min.js"></script>
+<script src="js/chart.js"></script>
+<script src="js/jquery-mask-money.js"></script>
+<script src="js/calculadora.js"></script>
 </body>
 </html>

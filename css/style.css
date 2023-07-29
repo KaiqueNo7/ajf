@@ -342,8 +342,8 @@ table td {
 .inputM-0 input,
 .inputCalc select,
 .inputM-0 select {
-  margin: 5px 10px 5px 0px;
-	padding: 10px 20px;
+  	margin: 5px 10px 5px 0px;
+	padding: 10px;
 	border-radius: 13px;
 	border: 1px solid #fff7f7;
 	box-shadow: var(--sombra);

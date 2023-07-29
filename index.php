@@ -20,12 +20,16 @@
 				." LEFT JOIN imovel i ON im.id_imovel = i.id_imovel"
 				." WHERE tipo_imagem = 1";
 			$rs = $conn->query($sql);
-			$row = $rs->fetch_assoc();
-			print "<img src='img/00" . $row['id_imovel'] . "/00" . $row['id_img_imovel'] . ".jpg' alt='Foto do " . $row['nome_imovel'] . "' class='active'>";
+			if($rs === TRUE){
+				$row = $rs->fetch_assoc();
+				print "<img src='img/00" . $row['id_imovel'] . "/00" . $row['id_img_imovel'] . ".jpg' alt='Foto do " . $row['nome_imovel'] . "' class='active'>";
 
-			while($row = $rs->fetch_assoc()){
-				print "<img src='img/00" . $row['id_imovel'] . "/00" . $row['id_img_imovel'] . ".jpg' alt='Foto do " . $row['nome_imovel'] . "'>";
-			} 
+				while($row = $rs->fetch_assoc()){
+					print "<img src='img/00" . $row['id_imovel'] . "/00" . $row['id_img_imovel'] . ".jpg' alt='Foto do " . $row['nome_imovel'] . "'>";
+				} 
+			} else {
+				print "<img src='img/ilustration_photo.jpg' alt='Imagem ilustrativa pós não há foto de nenhum imóvel.' class='active'>";
+			}
 		?>
 	</div>
 	<div class="contentBx">
@@ -33,20 +37,28 @@
 			$sql = "SELECT nome_imovel, url_imovel, descricao_imovel"
 				." FROM imovel";
 			$rs = $conn->query($sql);
-			$row1 = $rs->fetch_assoc();
-			print "<div class='active'>";
-				print "<h2>" . $row1['nome_imovel'] . "</h2>";
-				print "<p>" . $row1['descricao_imovel'] . "</p>";
-				print "<a href='" . $row1['url_imovel'] . "'>Saiba mais</a>";
-			print "</div>";
-
-			while($row1 = $rs->fetch_assoc()){
-				print "<div>";
+			if($rs === TRUE){
+				$row1 = $rs->fetch_assoc();
+				print "<div class='active'>";
 					print "<h2>" . $row1['nome_imovel'] . "</h2>";
 					print "<p>" . $row1['descricao_imovel'] . "</p>";
 					print "<a href='" . $row1['url_imovel'] . "'>Saiba mais</a>";
-				print "</div>";			
-			} 
+				print "</div>";
+
+				while($row1 = $rs->fetch_assoc()){
+					print "<div>";
+						print "<h2>" . $row1['nome_imovel'] . "</h2>";
+						print "<p>" . $row1['descricao_imovel'] . "</p>";
+						print "<a href='" . $row1['url_imovel'] . "'>Saiba mais</a>";
+					print "</div>";			
+				} 
+			} else {
+				print "<div class='active'>";
+					print "<h2>Título do imóvel</h2>";
+					print "<p>Descrição do imóvel</p>";
+					print "<a href='#'>Saiba mais</a>";
+				print "</div>";
+			}
 		?>
 	</div>
 	<ul class="controls">
@@ -64,20 +76,33 @@
 				. " LEFT JOIN img_imovel im ON i.id_imovel = im.id_imovel"
 				. " WHERE im.tipo_imagem = 2";
 				$rs = $conn->query($sql);
-
-				while($row2 = $rs->fetch_assoc()){
-					print "<div class='swiper-slide'>";
-						print "<div class='itemBox'>";
-							print "<img src='img/00" . $row2['id_imovel'] . "/00" . $row2['id_img_imovel'] . ".jpg' alt='" . $row2['nome_imovel'] . "'>";
-							print "<div class='content'>";
-								print "<h2>" . $row2['nome_imovel'] . "</h2>";
-								print "<p>" . $row2['metragem_imovel'] . "</p>";
-								print "<p>" . $row2['qtd_quartos'] . "</p>";
-								print "<a href='" . $row2['url_imovel'] . "'>Saiba mais</a>";
+				if($rs === TRUE){
+					while($row2 = $rs->fetch_assoc()){
+						print "<div class='swiper-slide'>";
+							print "<div class='itemBox'>";
+								print "<img src='img/00" . $row2['id_imovel'] . "/00" . $row2['id_img_imovel'] . ".jpg' alt='" . $row2['nome_imovel'] . "'>";
+								print "<div class='content'>";
+									print "<h2>" . $row2['nome_imovel'] . "</h2>";
+									print "<p>" . $row2['metragem_imovel'] . "</p>";
+									print "<p>" . $row2['qtd_quartos'] . "</p>";
+									print "<a href='" . $row2['url_imovel'] . "'>Saiba mais</a>";
+								print "</div>";			
 							print "</div>";			
 						print "</div>";			
-					print "</div>";			
-				} 
+					} 
+				} else {
+					print "<div class='swiper-slide'>";
+						print "<div class='itemBox'>";
+							print "<img src='img/ilustration_photo.jpg' alt='Imagem ilustrativa pós não há foto de nenhum imóvel.'>";
+							print "<div class='content'>";
+								print "<h2>Nome imóvel</h2>";
+								print "<p>m²</p>";
+								print "<p>Quartos</p>";
+								print "<a href='#'>Saiba mais</a>";
+							print "</div>";			
+						print "</div>";			
+					print "</div>";	
+				}
 			?>
       	</div>
 		<div class="swiper-button-next"></div>
