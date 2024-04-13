@@ -12,8 +12,16 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'primary': '#fb8500',
+                'secondary': '#fb8500',
+                'danger': '#fb8500',
+            },
+            spacing: {
+                '128': '28rem',
+            }
         },
     },
 

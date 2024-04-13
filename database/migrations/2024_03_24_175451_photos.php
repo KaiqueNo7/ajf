@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('property_id')->index();
             $table->binary('photo');
-            $table->int('type');
+            $table->integer('type');
             $table->timestamps();
         });
     }
