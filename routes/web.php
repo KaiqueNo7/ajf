@@ -12,8 +12,8 @@ Route::middleware(['auth'])->group(function () {
     Route::view('profile', 'profile')->name('profile');
 
     Route::controller(PropertiesController::class)->group(function () {
-        Route::get('/orders/{id}', 'show');
-        Route::get('/properties', 'create')->name('properties');
+        Route::get('/new/property', 'create')->name('new.property');
+        Route::get('/properties', 'show')->name('properties');
     });
 });
 
