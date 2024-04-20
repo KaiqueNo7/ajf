@@ -42,17 +42,27 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const mySwiper = new Swiper('#card-properties', {
-                slidesPerView: 1,
                 spaceBetween: 10,
                 loop: true,
                 slidesPerView: 3.5,
+                navigation: {
+                    nextEl: '#next',
+                    prevEl: '#prev',
+                },
+            });
+
+            const mySwiper2 = new Swiper('#principal-slide', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                effect: "fade",
+                loop: true,
                 pagination: {
-                    el: '.swiper-pagination',
+                    el: '#swiper-pagination',
                     clickable: true,
                 },
                 navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
+                    nextEl: '#swiper-button-next',
+                    prevEl: '#swiper-button-prev',
                 },
             });
         });

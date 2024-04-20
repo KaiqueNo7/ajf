@@ -22,10 +22,12 @@ class Property extends Model
         'maps',
     ];
 
-    public function photos(): BelongsTo
+    public function mainPhoto(): BelongsTo
     {
-        return $this->belongsTo(Photos::class);
+        return $this->belongsTo(Photos::class, 'id', 'property_id')
+        ->where('type', 0);
     }
+
     public function additionalInformation(): BelongsTo
     {
         return $this->belongsTo(additionalInformation::class, 'id', 'property_id');

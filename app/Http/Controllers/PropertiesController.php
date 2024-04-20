@@ -8,7 +8,7 @@ class PropertiesController extends Controller
 {
     public function show()
     {
-        $properties = Property::with('additionalInformation')->get();
+        $properties = Property::with('additionalInformation')->with('photos')->get();
 
         return view('layouts.properties', ['properties' => $properties]);
     }

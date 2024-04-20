@@ -10,7 +10,6 @@ class indexController extends Controller
 {
     public function index(): View
     {
-
         $properties = Property::all();
 
         return view('index', ['properties' => $properties]);

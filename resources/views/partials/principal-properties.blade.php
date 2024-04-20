@@ -57,8 +57,8 @@
           </div>
         </div>
       
-        <div class="swiper-button-prev text-orange-500"></div>
-        <div class="swiper-button-next text-orange-500"></div>
+        <div class="swiper-button-prev text-orange-500" id="prev"></div>
+        <div class="swiper-button-next text-orange-500" id="next"></div>
       </div>
     @endforelse
 </section>

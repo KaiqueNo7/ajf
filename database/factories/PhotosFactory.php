@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class PhotoFactory extends Factory
+class PhotosFactory extends Factory
 {
     /**
      * Define the model's default state.
