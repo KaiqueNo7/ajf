@@ -6,7 +6,7 @@ use App\Models\Photos;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PhotoSeeder extends Seeder
+class PhotosSeeder extends Seeder
 {
     public function run(): void
     {

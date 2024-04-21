@@ -18,9 +18,15 @@ class Property extends Model
         'size',
         'bedrooms',
         'bathrooms',
+        'image',
         'address',
         'maps',
     ];
+    
+    protected $attributes = [
+        'image' => null,
+    ];
+
 
     public function mainPhoto(): BelongsTo
     {

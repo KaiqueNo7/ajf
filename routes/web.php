@@ -4,7 +4,8 @@ use App\Http\Controllers\indexController;
 use App\Http\Controllers\PropertiesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [indexController::class, 'index']);
+Route::get('/', [indexController::class, 'index'])->name('home');
+Route::get('/{name_property}/{id}', [indexController::class, 'show']);
 Route::post('/', [indexController::class, 'index'])->name('sendmail');
 
 Route::middleware(['auth'])->group(function () {
