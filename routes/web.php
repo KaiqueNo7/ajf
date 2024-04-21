@@ -5,8 +5,9 @@ use App\Http\Controllers\PropertiesController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [indexController::class, 'index'])->name('home');
+Route::get('/obrigado-pelo-contato', [indexController::class, 'thanks'])->name('thanks');
 Route::get('/{name_property}/{id}', [indexController::class, 'show']);
-Route::post('/', [indexController::class, 'index'])->name('sendmail');
+Route::post('/', [indexController::class, 'sendMail'])->name('sendmail');
 
 Route::middleware(['auth'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');

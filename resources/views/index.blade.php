@@ -47,9 +47,10 @@
 
         @include('partials.live-rio')
 
-        @include('partials.form')
-    </body>
-    @include('partials.footer')
+        @include('partials.contact-form')
+
+        @include('partials.footer')
+    </body>  
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {

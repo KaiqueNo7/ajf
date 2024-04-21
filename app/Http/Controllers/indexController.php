@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\LeadClient;
 use App\Models\AdditionalInformation;
 use App\Models\Photos;
 use App\Models\Property;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Mail;
 
 class indexController extends Controller
 {   
@@ -16,6 +19,11 @@ class indexController extends Controller
         $properties = Property::all();
 
         return view('index', ['properties' => $properties]);
+    }
+
+    public function thanks(): View
+    {
+        return view('thanks');
     }
 
     public function show(String $name, Int $id): View
@@ -30,5 +38,14 @@ class indexController extends Controller
             'additionalInformation' => $additionalInformation,
             'photos' => $photos,
         ]);
+    }
+
+    public function sendMail(Request $request)
+    {
+        $dados = $request->all();
+
+        Mail::to('contato@ajfimoveis.com')->send(new LeadClient($dados));
+
+        return redirect()->route('thanks')->with('success', 'Mensagem enviada com sucesso!');
     }
 }

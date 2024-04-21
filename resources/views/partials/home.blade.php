@@ -31,4 +31,3 @@
     <div class="absolute bottom-0 left-0 w-full h-96 z-10 bg-gradient-to-t from-slate-900 to-transparent"></div>    4
 </section>
 @endif
-
