@@ -10,6 +10,7 @@
     </div>
 
     @if($property)
-        
+        <livewire:form-additional-information :propertyId="$property->id ?? ''">
+        <livewire:form-photos :propertyId="$property->id ?? ''">
     @endif
 </x-app-layout>

@@ -10,6 +10,7 @@ class AdditionalInformation extends Model
     use HasFactory;
 
     protected $fillable = [
+        'property_id',
         'text',
     ];
 }
