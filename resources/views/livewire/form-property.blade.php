@@ -1,5 +1,5 @@
 <div class="">
-    <form wire:submit='{{ $formAction }}' method="POST">
+    <form wire:submit='{{ $formAction }}'>
 
         <label for="nome">Nome</label>
         <input type="text" wire:model='name' placeholder="nome">
