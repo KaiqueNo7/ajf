@@ -1,4 +1,4 @@
-@if(!empty($properties))
+@if(isset($properties[0]))
     <div class="swiper w-full h-screen" id="principal-slide">
         <div class="swiper-wrapper">
             @foreach ($properties as $property)

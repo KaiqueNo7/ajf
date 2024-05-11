@@ -16,7 +16,8 @@ class indexController extends Controller
 
     public function index(): View
     {
-        $properties = Property::all();
+        $properties = Property::where('visibility', true)->get();
+        //$properties = Property::all();
 
         return view('index', ['properties' => $properties]);
     }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('address');
             $table->binary('image');
             $table->string('maps');
+            $table->boolean('visibility');
             $table->timestamps();
         });
     }

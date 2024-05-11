@@ -21,10 +21,12 @@ class Property extends Model
         'image',
         'address',
         'maps',
+        'visibility',
     ];
     
     protected $attributes = [
-        'image' => null,
+        'image' => '',
+        'visibility' => false,
     ];
 
 
