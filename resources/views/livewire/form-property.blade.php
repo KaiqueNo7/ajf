@@ -38,3 +38,23 @@
         @error('maps') <span class="error">{{ $message }}</span> @enderror 
         <button class="text-white" type="submit">{{ $action }}</button>
     </form>
+
+    @php
+    if($visibility){
+        $checked = "checked";
+    } @endphp
+
+    <input type="checkbox" wire:model='visibility' wire:change='changeVisibility({{ $propertyId }})' {{ $checked ?? '' }}>Visibilidade</input>
+
+    @if($photo)
+        <img src="{{ asset('storage/' . $photo) }}" alt="foto do imóvel" style="max-width: 100px;">
+        <button wire:click='deletePhoto({{ $propertyId }})'>Delete</button>
+    @endif
+
+    <form wire:submit="addPhoto({{ $propertyId }})">
+        <input type="file" wire:model="sendPhoto">
+    
+        @error('photo') <span class="error">{{ $message }}</span> @enderror
+    
+        <button type="submit">Save photo</button>
+    </form>

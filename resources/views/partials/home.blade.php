@@ -9,7 +9,7 @@
                     <div class="relative z-20">
                         <h1 class="text-white text-5xl font-semibold">{{ $property->name }}</h1>
                         <p class="text-white my-4 w-1/2">{{ $property->project }}</p>
-                        <a class="text-white bg-orange-500 py-2 px-4 uppercase font-semibold rounded-xl" href="/{{ normalizeString($property->name) }}/{{ $property->id }}">Saiba mais</a>
+                        <a class="text-white bg-orange-500 py-2 px-4 uppercase font-semibold rounded-xl" href="imovel/{{ normalizeString($property->name) }}/{{ $property->id }}">Saiba mais</a>
                     </div>
                     <div class="absolute bottom-0 left-0 w-full h-96 z-10 bg-gradient-to-t from-slate-900 to-transparent"></div>   
                 </div>

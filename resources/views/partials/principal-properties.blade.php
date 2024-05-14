@@ -8,9 +8,9 @@
               <div class="absolute bottom-0 left-0 w-full z-10 h-96 bg-gradient-to-t from-slate-900 to-transparent"></div>  
               <div class="relative h-full w-full z-20 p-4 flex justify-end items-start text-white flex-col">
                 <h4 class="mb-2">{{ $property->name }}</h4>
-                <p class=" font-medium">{{ $property->size }}</p>
+                <p class=" font-medium">{{ $property->size }} m²</p>
                 <p class=" font-medium">{{ $property->bedrooms }}</p>
-                <a href="/{{ normalizeString($property->name) }}/{{ $property->id }}" class="py-2 px-4 mt-2 bg-orange-500 rounded-xl">Saiba mais</a>
+                <a href="imovel/{{ normalizeString($property->name) }}/{{ $property->id }}" class="py-2 px-4 mt-2 bg-orange-500 rounded-xl">Saiba mais</a>
               </div>
             </div>
           @empty
