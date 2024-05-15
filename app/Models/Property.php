@@ -38,6 +38,6 @@ class Property extends Model
 
     public function additionalInformation(): BelongsTo
     {
-        return $this->belongsTo(additionalInformation::class, 'id', 'property_id');
+        return $this->belongsTo(AdditionalInformation::class, 'id', 'property_id');
     }
 }
