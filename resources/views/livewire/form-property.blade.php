@@ -48,7 +48,7 @@
 
     @if($photo)
         <img src="{{ asset('storage/' . $photo) }}" alt="foto do imóvel" style="max-width: 100px;">
-        <button wire:click='deletePhoto({{ $propertyId }})'>Delete</button>
+        <button wire:click='deletePhoto({{ $propertyId }})'>Deletar</button>
     @endif
 
     <form wire:submit="addPhoto({{ $propertyId }})">
