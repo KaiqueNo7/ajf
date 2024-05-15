@@ -47,7 +47,7 @@
     <input type="checkbox" wire:model='visibility' wire:change='changeVisibility({{ $propertyId }})' {{ $checked ?? '' }}>Visibilidade</input>
 
     @if($photo)
-        <img src="{{ asset('storage/' . $photo) }}" alt="foto do imóvel" style="max-width: 120px;">
+        <img src="{{ asset('storage/' . $photo) }}" alt="foto do imóvel" style="max-width: 100px;">
         <button wire:click='deletePhoto({{ $propertyId }})'>Deletar</button>
     @endif
 
