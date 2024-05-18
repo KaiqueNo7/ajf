@@ -22,7 +22,26 @@
             * {
                 font-family: 'Poppins', sans-serif;
             }
-        </style>
+
+            /* Copie e cole o CSS personalizado aqui */
+            .swiper-button-prev {
+              color: #ea580c;
+              transition: 0.2s;
+
+            }
+            .swiper-button-next {
+              color: #ea580c;
+              transition: 0.2s;
+            }
+            .swiper-button-prev:hover,
+            .swiper-button-next:hover {
+              color: #ffffff;
+            }
+
+            .swiper-pagination-bullet-active {
+                background-color: #ea580c;
+            }
+          </style>
     </head>
     <body class="antialiased font-sans">
         @php
