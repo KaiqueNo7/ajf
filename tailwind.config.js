@@ -20,7 +20,7 @@ export default {
                 'danger': '#fb8500',
             },
             spacing: {
-                '128': '28rem',
+                '128': '30rem',
                 '140': '35rem',
             }
 

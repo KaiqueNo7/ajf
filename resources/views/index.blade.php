@@ -34,7 +34,7 @@
             
                 $string = strtolower($string);
                 return $string;
-            }   
+            } 
         @endphp
 
         @include('partials.header')

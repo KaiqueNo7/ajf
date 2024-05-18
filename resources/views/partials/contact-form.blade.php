@@ -1,7 +1,7 @@
 <section class="p-4 flex justify-center items-center">
-    <div class="w-full min-h-60 bg-orange-500 rounded-xl shadow-xl p-4 flex justify-center items-center">
-        <h4 class="text-white text-4xl font-semibold text-start w-1/2 pl-4 leading-relaxed"><span class="bg-white text-orange-500">Gostou de um imóvel?</span><br> Preencha o formulário.<br> <span class="bg-white text-orange-500">Vou entrar em contato</span><br> diretamente com você.</h4>
-        <form method="post" action="{{ route('sendmail') }}" class="w-1/2">
+    <div class="w-full min-h-60 bg-orange-500 rounded-xl shadow-xl p-4 flex justify-center items-center xl:flex-row lg:flex-row md:flex-row flex-col">
+        <h4 class="text-white xl:text-4xl lg:text-4xl md:text-4xl text-xl font-semibold xl:text-start lg:text-start text-center md:text-start xl:w-1/2 lg:w-1/2 md:w-1/2 w-full pl-4 leading-relaxed"><span class="bg-white text-orange-500">Gostou de um imóvel?</span><br> Preencha o formulário.<br> <span class="bg-white text-orange-500">Vou entrar em contato</span><br> diretamente com você.</h4>
+        <form method="post" action="{{ route('sendmail') }}" class="xl:w-1/2 lg:w-1/2 md:w-1/2 w-full">
                 @csrf
 
                 <input type="hidden" name="pagina" value="">

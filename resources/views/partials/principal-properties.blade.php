@@ -3,14 +3,14 @@
     <div class="swiper w-full my-4" id="card-properties">
       <div class="swiper-wrapper">
           @forelse ($properties as $property)
-            <div class="swiper-slide h-[28rem]">
-              <img src="{{ asset('storage/' . $property->image) }}" alt="Rio de Janeiro" class="absolute w-full h-full left-0 top-0 object-cover z-0">
-              <div class="absolute bottom-0 left-0 w-full z-10 h-96 bg-gradient-to-t from-slate-900 to-transparent"></div>  
-              <div class="relative h-full w-full z-20 p-4 flex justify-end items-start text-white flex-col">
+            <div class="swiper-slide h-[28rem] rounded-xl group/item overflow-hidden">
+              <img src="{{ asset('storage/' . $property->image) }}" alt="Rio de Janeiro" class="absolute w-full h-full left-0 top-0 object-cover z-0 rounded-xl group-hover/item:scale-110 transition-all">
+              <div class="absolute bottom-0 left-0 w-full z-10 h-96 bg-gradient-to-t from-slate-900 to-transparent rounded-xl"></div>  
+              <div class="relative h-full w-full z-20 p-4 flex justify-end items-start text-white flex-col rounded-xl">
                 <h4 class="mb-2">{{ $property->name }}</h4>
-                <p class=" font-medium">{{ $property->size }} m²</p>
-                <p class=" font-medium">{{ $property->bedrooms }}</p>
-                <a href="imovel/{{ normalizeString($property->name) }}/{{ $property->id }}" class="py-2 px-4 mt-2 bg-orange-500 rounded-xl">Saiba mais</a>
+                <p class="font-medium">{{ $property->size }} m²</p>
+                <p class="font-medium mb-2">{{ $property->bedrooms }}</p>
+                <x-button-link href="imovel/{{ normalizeString($property->name) }}/{{ $property->id }}">Saiba mais</x-button-link>
               </div>
             </div>
           @empty
