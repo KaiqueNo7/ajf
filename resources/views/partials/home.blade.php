@@ -18,7 +18,7 @@
 
         <div class="swiper-pagination" id="swiper-pagination"></div>
 
-        <div class="swiper-button-next" id="swiper-button-next text-"></div>
+        <div class="swiper-button-next" id="swiper-button-next"></div>
         <div class="swiper-button-prev" id="swiper-button-prev"></div>
     </div>
 @else
