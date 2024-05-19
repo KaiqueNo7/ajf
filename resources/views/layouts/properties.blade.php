@@ -6,39 +6,39 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="relative overflow-x-auto">
-
-                    <a href="{{ route('new.property') }}">Adicionar novo</a>
-
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-center items-end flex-col">
+            
+            <a class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition" href="{{ route('new.property') }}"><i class="fa-solid fa-plus"></i> Adicionar novo</a>
+            <div class="bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg my-4 w-full">
+                <div class="relative">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                        <thead class="text-xs text-white uppercase">
                             <tr>
                                 <th></th>
-                                <th scope="col" class="px-6 py-3">Nome do imóvel</th>
                                 <th scope="col" class="px-6 py-3">ID do Imóvel</th>
+                                <th scope="col" class="px-6 py-3">Nome do imóvel</th>
                                 <th scope="col" class="px-6 py-3">Status</th>
+                                <th scope="col" class="px-6 py-3">Endereço</th>
                                 <th scope="col" class="px-6 py-3"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($properties as $property)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <tr class="border-b text-white border-gray-400">
                                 <td class="px-6 py-4">
-                                    <a href="edit/{{ $property->id }}">edit</a>
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $property->name }}
+                                    <a href="edit/{{ $property->id }}">Edit</a>
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $property->id }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $property->address }}
+                                    {{ $property->name }}
                                 </td>
                                 <td class="px-6 py-4">
-                                {{-- {{ $property->additionalInformation->text }} --}}
+                                    {{ $property->status }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ $property->address }}
                                 </td>
                             </tr>
                             @empty

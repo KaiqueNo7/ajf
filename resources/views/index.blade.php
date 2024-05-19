@@ -23,7 +23,6 @@
                 font-family: 'Poppins', sans-serif;
             }
 
-            /* Copie e cole o CSS personalizado aqui */
             .swiper-button-prev {
               color: #ea580c;
               transition: 0.2s;

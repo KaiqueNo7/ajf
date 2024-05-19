@@ -12,6 +12,12 @@
                     {{ __("You're logged in!") }}
                 </div>
             </div>
+            <a href="{{ route('new.property') }}">
+                <div class="w-60 h-56 my-4 bg-gray-700 shadow-lg rounded-lg flex justify-center items-center text-white flex-col border border-transparent hover:border-white transition-all">
+                    Adicionar imóvel
+                    <i class="fa-solid fa-circle-plus my-2 text-3xl"></i>
+                </div>
+            </a>
         </div>
     </div>
 </x-app-layout>

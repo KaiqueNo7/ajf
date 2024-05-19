@@ -1,1 +1,1 @@
-<img class="size-16" src="{{ asset('/storage/logo.png') }}" alt="Logo AJF Imóveis">
+<img class="size-14" src="{{ asset('/storage/logo.png') }}" alt="Logo AJF Imóveis">

@@ -24,4 +24,18 @@ class PropertiesController extends Controller
 
         return view('layouts.new-property', ['property' => $property]);
     }
+
+    public function additionalInformation($id)
+    {
+        $property = Property::where('id', $id)->first();
+
+        return view('layouts.additional-information', ['property' => $property]);
+    }
+
+    public function photos($id)
+    {
+        $property = Property::where('id', $id)->first();
+
+        return view('layouts.photos', ['property' => $property]);
+    }
 }

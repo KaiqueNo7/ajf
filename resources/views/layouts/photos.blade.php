@@ -10,7 +10,7 @@
 
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <livewire:form-property :propertyId="$property->id ?? ''">
+            <livewire:form-photos :propertyId="$property->id ?? ''">
         </div>
     </div>
 </x-app-layout>

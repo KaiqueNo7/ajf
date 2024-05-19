@@ -12,14 +12,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('status');
-            $table->mediumText('project');
-            $table->mediumText('plant');
+            $table->longText('project');
+            $table->longText('plant');
             $table->string('size', 100);
             $table->string('bedrooms', 100);
             $table->string('bathrooms', 100);
             $table->string('address');
             $table->binary('image');
-            $table->string('maps');
+            $table->longText('maps');
             $table->boolean('visibility');
             $table->timestamps();
         });

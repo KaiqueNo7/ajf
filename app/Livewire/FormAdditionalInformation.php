@@ -16,6 +16,8 @@ class FormAdditionalInformation extends Component
             'property_id' => $id,
             'text' => $this->additionalInformation,
         ]);
+
+        $this->additionalInformation = '';
     }
 
     public function updateInformation($id, $text)
@@ -25,6 +27,18 @@ class FormAdditionalInformation extends Component
         $information->update([
             'text' => $text,
         ]);
+    }
+
+    public function changeInput($id)
+    {
+        $this->dispatch('input-focus', ['id' => 'input' . $id]);
+    }
+
+    public function delete($id)
+    {
+        $information = AdditionalInformation::find($id);
+
+        $information->delete();
     }
 
     public function render()

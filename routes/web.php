@@ -17,6 +17,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/new-property', 'render')->name('new.property');
         Route::get('/properties', 'show')->name('properties');
         Route::get('/edit/{id}', 'edit')->name('edit.id');
+        Route::get('/additional-infos/{id}', 'additionalInformation')->name('additional-infos.id');
+        Route::get('/photos/{id}', 'photos')->name('photos.id');
     });
 });
 
