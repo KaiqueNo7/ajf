@@ -15,7 +15,7 @@
 
             <div class="mb-5">
                 <label for="address" class="block mb-2 text-sm font-medium text-white">Endereço</label>
-                <input type="text" wire:model='address' id="address" class="bg-gray-700 border border-gray-800 text-white text-sm rounded-lg w-full" placeholder="Rua, Bairro - Cidade" required />
+                <input type="text" wire:model='address' id="address" class="bg-gray-700 border border-gray-800 text-white text-sm rounded-lg w-full" placeholder="Rua, Bairro, Estado" required />
                 @error('address') <span class="error">{{ $message }}</span> @enderror 
             </div>
         </div>
@@ -48,13 +48,6 @@
                 <textarea wire:model='plant' placeholder="Escreve sobre a planta do imóvel..." rows="4" class="block p-2.5 w-full text-sm text-white bg-gray-700 rounded-lg border border-gray-800 focus:ring-blue-500 focus:border-blue-500"></textarea>  
             </div>
         </div>
-        <div class="w-full">
-            <div class="mb-5">
-                <label for="maps" class="block mb-2 text-sm font-medium text-white">Google Maps Link</label>
-                <input type="text" wire:model='maps' id="maps" class="bg-gray-700 border border-gray-800 text-white text-sm rounded-lg w-full" placeholder="Link do Google Maps do imóvel" required />
-                @error('maps') <span class="error">{{ $message }}</span> @enderror 
-            </div>
-        </div>
 
         @php
             if($visibility){
@@ -67,15 +60,25 @@
 
     @if($propertyId)
         @if($photo)
-            <img src="{{ asset('storage/' . $photo) }}" alt="foto do imóvel" style="max-width: 100px;">
-            <button wire:click='deletePhoto({{ $propertyId }})'>Deletar</button>
+        <div class="relative w-full h-48 my-4">
+            <img src="{{ asset('storage/' . $photo) }}" alt="foto do imóvel" class="absolute w-full h-full left-0 top-0 object-contain z-0 bg-gray-800">
+            <button type="button" wire:click='deletePhoto({{ $propertyId }})' class="absolute bottom-3 left-3"><i class="fa-solid fa-trash text-red-500 hover:text-red-400"></i></button>
+        </div>
         @endif
 
-        <form wire:submit="addPhoto({{ $propertyId }})" class="my-4">
-            <input type="file" wire:model="sendPhoto">
-            @error('photo') <span class="error">{{ $message }}</span> @enderror
-            <button type="submit" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition">Anexar foto</button>
-        </form>
+        <div x-data>
+            <form x-ref="form" enctype="multipart/form-data" class="my-4">
+                <label class="block mb-2 text-sm font-medium text-white" for="file_input">Anexar capa</label>
+                <input 
+                    x-on:change="$wire.upload('sendPhoto', $event.target.files[0])" 
+                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
+                    id="file_input" 
+                    type="file" 
+                    accept="image/*">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG ou GIF (MAX. 800x400px).</p>
+                @error('sendPhoto') <span class="error">{{ $message }}</span> @enderror
+            </form>
+        </div>
 
         <label class="inline-flex items-center mb-5 cursor-pointer">
             <input type="checkbox" wire:model='visibility' wire:change='changeVisibility({{ $propertyId }})' {{ $checked ?? '' }} class="sr-only peer">

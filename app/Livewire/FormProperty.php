@@ -76,13 +76,26 @@ class FormProperty extends Component
         ]);
     }
 
-    public function addPhoto($id)
+    public function updatedSendPhoto()
     {
-        $property = Property::find($id);
-
-        $property->update([
-            'image' => $this->sendPhoto->store('property/' . strtolower($property->name), 'public'),
+        $this->validate([
+            'sendPhoto' => 'image|max:1024', // 1MB Max
         ]);
+
+        $propertyId = 123; // Substitua pelo ID real ou obtenha-o de outra forma
+        $property = Property::find($propertyId);
+
+        if ($property) {
+            $path = $this->sendPhoto->store('property/' . strtolower($property->name), 'public');
+
+            $property->update([
+                'image' => $path,
+            ]);
+
+            session()->flash('message', 'Imagem enviada com sucesso!');
+        } else {
+            session()->flash('error', 'Propriedade não encontrada.');
+        }
     }
 
     public function deletePhoto($id)

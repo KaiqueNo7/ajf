@@ -74,5 +74,33 @@
                 },
             });
         });
+
+        function inserirMapa(endereco) {
+            // Construa o endereço
+            //var endereco = `${bairro}, ${cidade}, ${estado}`;
+            // Encode o endereço para ser usado na URL
+            var enderecoEncoded = encodeURIComponent(endereco);
+
+            // URL do Google Maps sem usar a API Key
+            var url = `https://www.google.com/maps?q=${enderecoEncoded}&output=embed`;
+
+            // Crie o iframe
+            var iframe = document.createElement('iframe');
+            iframe.width = '600';
+            iframe.height = '450';
+            iframe.style.border = '0';
+            iframe.src = url;
+            iframe.allowFullscreen = true;
+
+            // Insira o iframe no container
+            var mapaContainer = document.getElementById('mapa-container');
+            mapaContainer.innerHTML = ''; // Limpa o container antes de adicionar o novo mapa
+            mapaContainer.appendChild(iframe);
+        }
+
+        // Exemplo de uso
+        var endereco = '{{ $property->address }}';
+
+        inserirMapa(endereco);
     </script>
 </html>

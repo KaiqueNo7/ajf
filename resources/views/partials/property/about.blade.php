@@ -9,7 +9,7 @@
             <div class="swiper-wrapper">
                 @foreach ($photos as $photo)
                     <div class="swiper-slide">
-                        <img src="{{ asset('storage/' . $photo->photo) }}" alt="Rio de Janeiro" class="absolute w-full h-full left-0 top-0 object-cover z-0"> 
+                        <img src="{{ asset('storage/' . $photo->photo) }}" alt="Rio de Janeiro" class="absolute w-full h-full left-0 top-0 object-contain z-0 bg-gray-800"> 
                     </div>
                 @endforeach
             </div>

@@ -1,4 +1,4 @@
-<footer class="relative w-full bg-black bg-opacity-80 px-2 py-5 flex justify-center items-center flex-col">
+<footer class="relative w-full bg-gray-800 px-2 py-5 flex justify-center items-center flex-col">
     <ul class="relative flex justify-center items-center my-2 flex-wrap">
         <li class="list-none">
             <a class="text-2xl text-white mx-2 hover:animate-bounce" href="https://www.facebook.com/Comemore_im%C3%B3veis-605975906598358" target="_blank"><i class="fa-brands fa-facebook"></i></a>

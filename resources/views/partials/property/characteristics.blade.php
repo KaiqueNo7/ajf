@@ -1,7 +1,7 @@
 <section class="w-full p-4 flex justify-center items-start lg:flex-row md:flex-row flex-col">
     <div class="lg:w-1/2 md:w-1/2 w-full mb-4">
         <p class=" text-xl mb-4"><i class="fa-solid fa-location-dot text-orange-500"></i> {{ $property->address }}</p>
-        <iframe src="https://www.google.com/maps/embed?pb={{ $property->maps }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div id="mapa-container"></div>
     </div>
     <div class="lg:w-1/2 md:w-1/2 w-full">
         <h1 class="font-semibold text-4xl text-orange-500">PRINCIPAIS CARACTERÍSTICAS <br>{{ $property->name }}</h1>

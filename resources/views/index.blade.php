@@ -80,6 +80,20 @@
                     nextEl: '#next',
                     prevEl: '#prev',
                 },
+                breakpoints: {
+                    "@0.00": {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    "@0.75": {
+                        slidesPerView: 1.5,
+                        spaceBetween: 10,
+                    },
+                    "@1.00": {
+                        slidesPerView: 3.5,
+                        spaceBetween: 10,
+                    },
+                },
             });
 
             const mySwiper2 = new Swiper('#principal-slide', {

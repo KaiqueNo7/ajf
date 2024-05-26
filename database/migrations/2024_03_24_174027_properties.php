@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('bathrooms', 100);
             $table->string('address');
             $table->binary('image');
-            $table->longText('maps');
             $table->boolean('visibility');
             $table->timestamps();
         });
