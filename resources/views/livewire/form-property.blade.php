@@ -59,26 +59,37 @@
     </form>
 
     @if($propertyId)
+        
+        
         @if($photo)
-        <div class="relative w-full h-48 my-4">
-            <img src="{{ asset('storage/' . $photo) }}" alt="foto do imóvel" class="absolute w-full h-full left-0 top-0 object-contain z-0 bg-gray-800">
-            <button type="button" wire:click='deletePhoto({{ $propertyId }})' class="absolute bottom-3 left-3"><i class="fa-solid fa-trash text-red-500 hover:text-red-400"></i></button>
-        </div>
-        @endif
+            <div class="relative w-full h-48 my-4">
+                <img src="{{ asset('storage/' . $photo) }}" alt="foto do imóvel" class="absolute w-full h-full left-0 top-0 object-contain z-0 bg-gray-800">
+                <button type="button" wire:click='deletePhoto({{ $propertyId }})' class="absolute bottom-3 left-3"><i class="fa-solid fa-trash text-red-500 hover:text-red-400"></i></button>
+            </div>
+        @else
+            <form wire:submit="addPhoto({{ $propertyId }})" class="my-4">
+                <label for="file_input" class="block mb-2 text-sm font-medium text-white">Anexar capa</label>
+                <label class="block">
+                    <span class="sr-only">Escolha a capa</span>
+                    <input id="file_input" type="file" wire:model="sendPhoto" accept="image/*" class="block w-full text-sm text-slate-500
+                      file:mr-4 file:py-2 file:px-4
+                      file:rounded file:border-0
+                      file:text-sm file:font-semibold
+                      file:bg-orange-50 file:text-orange-700
+                      hover:file:bg-orange-100
+                    "/>
+                </label>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PNG ou JPG.</p>
 
-        <div x-data>
-            <form x-ref="form" enctype="multipart/form-data" class="my-4">
-                <label class="block mb-2 text-sm font-medium text-white" for="file_input">Anexar capa</label>
-                <input 
-                    x-on:change="$wire.upload('sendPhoto', $event.target.files[0])" 
-                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
-                    id="file_input" 
-                    type="file" 
-                    accept="image/*">
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG ou GIF (MAX. 800x400px).</p>
-                @error('sendPhoto') <span class="error">{{ $message }}</span> @enderror
+                <div class="text-slate-500 my-2" wire:loading>Carregando...</div>
+                @error('photo') <span class="error">{{ $message }}</span> @enderror
+                @if ($sendPhoto)
+                    <button type="submit" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded transition mt-2">Confirmar</button>
+                @endif
             </form>
-        </div>
+
+            
+        @endif
 
         <label class="inline-flex items-center mb-5 cursor-pointer">
             <input type="checkbox" wire:model='visibility' wire:change='changeVisibility({{ $propertyId }})' {{ $checked ?? '' }} class="sr-only peer">

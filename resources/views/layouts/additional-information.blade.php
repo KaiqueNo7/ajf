@@ -14,3 +14,20 @@
         </div>
     </div>
 </x-app-layout>
+
+<script>
+    document.addEventListener('livewire:init', function () {
+
+        Livewire.on('input-focus', event => {
+            let inputElement = document.getElementById(event[0].id);
+
+            if (inputElement) {
+                inputElement.classList.add('pointer-events-none');
+                inputElement.focus();
+
+                const length = inputElement.value.length;
+                    inputElement.setSelectionRange(length, length);
+            }
+        });
+    });
+</script>
