@@ -5,7 +5,7 @@
         <button type="button" onclick="toggleInformation('input{{ $information->id }}')" class="flex-shrink-0 text-sm py-1 px-2 ml-2 rounded">
             <i class="fa-solid fa-pen-to-square text-gray-500 hover:text-gray-400"></i>
         </button>
-        <button type="button" wire:click='delete({{ $information->id }})' class="flex-shrink-0 text-sm py-1 px-2 ml-2 rounded">
+        <button type="button" wire:click='delete({{ $information->id }})' wire:confirm="Tem certeza?" class="flex-shrink-0 text-sm py-1 px-2 ml-2 rounded">
             <i class="fa-solid fa-trash text-gray-500 hover:text-gray-400"></i>
         </button>
     </div>

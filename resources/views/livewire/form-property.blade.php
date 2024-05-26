@@ -64,7 +64,7 @@
         @if($photo)
             <div class="relative w-full h-48 my-4">
                 <img src="{{ asset('storage/' . $photo) }}" alt="foto do imóvel" class="absolute w-full h-full left-0 top-0 object-contain z-0 bg-gray-800">
-                <button type="button" wire:click='deletePhoto({{ $propertyId }})' class="absolute bottom-3 left-3"><i class="fa-solid fa-trash text-red-500 hover:text-red-400"></i></button>
+                <button type="button" wire:click='deletePhoto({{ $propertyId }})' wire:confirm="Tem certeza?" class="absolute bottom-3 left-3"><i class="fa-solid fa-trash text-red-500 hover:text-red-400"></i></button>
             </div>
         @else
             <form wire:submit="addPhoto({{ $propertyId }})" class="my-4">
