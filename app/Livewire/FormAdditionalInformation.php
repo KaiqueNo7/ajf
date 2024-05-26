@@ -28,12 +28,7 @@ class FormAdditionalInformation extends Component
             'text' => $text,
         ]);
     }
-
-    public function changeInput($id)
-    {
-        $this->dispatch('input-focus', ['id' => 'input' . $id]);
-    }
-
+    
     public function delete($id)
     {
         $information = AdditionalInformation::find($id);

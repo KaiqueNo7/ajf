@@ -26,7 +26,7 @@
                             @forelse ($properties as $property)
                             <tr class="border-b text-white border-gray-400">
                                 <td class="px-6 py-4">
-                                    <a href="edit/{{ $property->id }}">Edit</a>
+                                    <a href="edit/{{ $property->id }}"><i class="fa-solid fa-pen-to-square text-gray-500 hover:text-gray-400"></i></a>
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $property->id }}
