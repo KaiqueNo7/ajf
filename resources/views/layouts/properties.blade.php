@@ -15,7 +15,7 @@
                         <thead class="text-xs text-white uppercase">
                             <tr>
                                 <th></th>
-                                <th scope="col" class="px-6 py-3">ID do Imóvel</th>
+                                <th scope="col" with="1%" class="px-6 py-3">ID</th>
                                 <th scope="col" class="px-6 py-3">Nome do imóvel</th>
                                 <th scope="col" class="px-6 py-3">Status</th>
                                 <th scope="col" class="px-6 py-3">Endereço</th>

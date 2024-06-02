@@ -21,7 +21,6 @@ class FormProperty extends Component
     public $bedrooms;
     public $bathrooms;
     public $address;
-    public $maps;
     public $propertyId;
     public $formAction = 'create';
     public $action = 'Incluir';
@@ -44,7 +43,6 @@ class FormProperty extends Component
             'bedrooms' => $this->bedrooms,
             'bathrooms' => $this->bathrooms,
             'address' => $this->address,
-            'maps' => $this->maps,
         ]);
 
         return redirect()->to('edit/' . $property->id);
@@ -63,7 +61,6 @@ class FormProperty extends Component
             'bedrooms' => $this->bedrooms,
             'bathrooms' => $this->bathrooms,
             'address' => $this->address,
-            'maps' => $this->maps,
         ]); 
     }
 
@@ -119,7 +116,6 @@ class FormProperty extends Component
             $this->bedrooms = $property->bedrooms;
             $this->bathrooms = $property->bathrooms;
             $this->address = $property->address;
-            $this->maps = $property->maps;
             $this->visibility = $property->visibility;
             $this->photo = $property->image;
             $this->formAction = 'update(' . $property->id . ')';

@@ -20,7 +20,6 @@ class Property extends Model
         'bathrooms',
         'image',
         'address',
-        'maps',
         'visibility',
     ];
     
