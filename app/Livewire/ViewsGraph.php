@@ -2,15 +2,15 @@
 
 namespace App\Livewire;
 
-use App\Models\Views;
+use App\Models\Property;
 use Livewire\Component;
 
 class ViewsGraph extends Component
 {
     public function render()
     {
-        $views = Views::with('property')->get();
+        $propertyViews = Property::withCount('views')->get();
 
-        return view('livewire.views-graph', ['views' => $views]);
+        return view('livewire.views-graph', ['propertyViews' => $propertyViews]);
     }
 }

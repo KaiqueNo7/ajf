@@ -28,7 +28,6 @@ class Property extends Model
         'visibility' => false,
     ];
 
-
     public function mainPhoto(): BelongsTo
     {
         return $this->belongsTo(Photos::class, 'id', 'property_id')
@@ -38,5 +37,10 @@ class Property extends Model
     public function additionalInformation(): BelongsTo
     {
         return $this->belongsTo(AdditionalInformation::class, 'id', 'property_id');
+    }
+
+    public function views(): BelongsTo
+    {
+        return $this->belongsTo(Views::class, 'id', 'property_id');
     }
 }
