@@ -18,6 +18,8 @@ class FormAdditionalInformation extends Component
         ]);
 
         $this->additionalInformation = '';
+
+        flash()->success('Informação adicionada com sucesso.');
     }
 
     public function updateInformation($id, $text)
@@ -27,6 +29,8 @@ class FormAdditionalInformation extends Component
         $information->update([
             'text' => $text,
         ]);
+
+        flash()->success('Informação atualizada com sucesso.');
     }
     
     public function delete($id)
@@ -34,6 +38,8 @@ class FormAdditionalInformation extends Component
         $information = AdditionalInformation::find($id);
 
         $information->delete();
+
+        flash()->success('Informação deletada com sucesso.');
     }
 
     public function render()

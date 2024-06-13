@@ -29,6 +29,8 @@ class FormPhotos extends Component
                 'type' => 1,
             ]);   
         }
+
+        flash()->success('Fotos incluídas com sucesso.');
     }
 
     public function delete($id)
@@ -44,6 +46,8 @@ class FormPhotos extends Component
         }
 
         Photos::where('id', $id)->delete();
+
+        flash()->success('Foto deletada com sucesso.');
     }
 
     public function render()

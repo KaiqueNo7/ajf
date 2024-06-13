@@ -9,7 +9,13 @@
         
             <div class="mb-5">
                 <label for="status" class="block mb-2 text-sm font-medium text-white">Status</label>
-                <input type="text" wire:model='status' id="status" class="bg-gray-700 border border-gray-800 text-white text-sm rounded-lg w-full" placeholder="Status do imóvel (Lançamento, Conclusão de obras, etc...)" required />
+                <select class="bg-gray-700 border border-gray-800 text-white text-sm rounded-lg w-full p-2" wire:model='status' id="status" required>
+                    <option value="">Selecione</option>
+                    @foreach ($allStatus as $item)
+                        <option value="{{ $item }}" @if($status == $item) selected @endif>{{ $item }}</option>
+                    @endforeach
+                </select>
+             
                 @error('status') <span class="error">{{ $message }}</span> @enderror 
             </div>
 

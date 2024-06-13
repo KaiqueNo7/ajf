@@ -87,13 +87,12 @@
             iframe.src = url;
             iframe.allowFullscreen = true;
 
-            // Insira o iframe no container
+
             var mapaContainer = document.getElementById('mapa-container');
-            mapaContainer.innerHTML = ''; // Limpa o container antes de adicionar o novo mapa
+            mapaContainer.innerHTML = '';
             mapaContainer.appendChild(iframe);
         }
 
-        // Exemplo de uso
         var endereco = '{{ $property->address }}';
 
         inserirMapa(endereco);

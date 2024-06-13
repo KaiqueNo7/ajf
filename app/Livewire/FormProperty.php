@@ -25,6 +25,7 @@ class FormProperty extends Component
     public $formAction = 'create';
     public $action = 'Incluir';
     public $visibility = false;
+    public $allStatus = ['Lançamento', 'Pronto', 'Finalizando obras', 'Novas unidades'];
 
     #[Validate(['photo' => 'image|max:1024'])]
     public $photo;
@@ -45,6 +46,8 @@ class FormProperty extends Component
             'address' => $this->address,
         ]);
 
+        flash()->success('Operation completed successfully.');
+
         return redirect()->to('edit/' . $property->id);
     }    
 
@@ -62,6 +65,8 @@ class FormProperty extends Component
             'bathrooms' => $this->bathrooms,
             'address' => $this->address,
         ]); 
+
+        flash()->success('Informações atualizadas com sucesso.');
     }
 
     public function changeVisibility($id)
@@ -71,6 +76,8 @@ class FormProperty extends Component
         $property->update([
             'visibility' => !$property->visibility,
         ]);
+
+        flash()->success('Visualização alterada com sucesso.');
     }
 
     public function addPhoto($id)
@@ -84,6 +91,8 @@ class FormProperty extends Component
         $property->update([
             'image' => $this->sendPhoto->store('property/' . strtolower($property->name), 'public'),
         ]);
+
+        flash()->success('Foto adicionada com sucesso.');
     }
 
     public function deletePhoto($id)
@@ -101,6 +110,8 @@ class FormProperty extends Component
         $property->update([
             'image' => '',
         ]);
+
+        flash()->success('Foto deletada com sucesso.');
     }
 
     public function render()
