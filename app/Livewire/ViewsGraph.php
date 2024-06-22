@@ -9,7 +9,9 @@ class ViewsGraph extends Component
 {
     public function render()
     {
-        $propertyViews = Property::withCount('views')->get();
+        $propertyViews = Property::withCount('views')
+            ->orderByDesc('views_count')
+            ->get();
 
         return view('livewire.views-graph', ['propertyViews' => $propertyViews]);
     }
