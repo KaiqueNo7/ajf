@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Property;
 use Illuminate\Support\Facades\Storage;
-use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -15,6 +14,7 @@ class FormProperty extends Component
 
     public $name;
     public $status;
+
     public $project;
     public $plant;
     public $size;
@@ -35,20 +35,25 @@ class FormProperty extends Component
 
     public function create()
     {
-        $property = Property::create([
-            'name' => $this->name,
-            'status' => $this->status,
-            'project' => $this->project,
-            'plant' => $this->plant,
-            'size' => $this->size,
-            'bedrooms' => $this->bedrooms,
-            'bathrooms' => $this->bathrooms,
-            'address' => $this->address,
+        $validated = $this->validate([ 
+            'name' => 'required|min:3',
+            'status' => 'required|min:3',
+            'project' => 'required|min:3',
+            'plant' => 'required|min:3',
+            'size' => 'required|min:3',
+            'bedrooms' => 'required|min:3',
+            'bathrooms' => 'required|min:3',
+            'address' => 'required|min:3',
         ]);
 
-        flash()->success('Operation completed successfully.');
+        $property = Property::create($validated);
 
-        return redirect()->to('edit/' . $property->id);
+        if($property){
+            flash()->success('Imóvel adicionado com sucesso.');
+            return redirect()->to('edit/' . $property->id);
+        }
+
+        flash()->error('Erro ao adicionar imóvel.');
     }    
 
     public function update($id)
