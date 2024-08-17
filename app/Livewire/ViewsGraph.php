@@ -11,7 +11,7 @@ class ViewsGraph extends Component
     {
         $views = Property::withCount('views')
             ->where('visibility', '=', 1)
-            ->orderByDesc('views_count')
+            ->orderByDesc('name')
             ->get();
 
         return view('livewire.views-graph', compact('views'));

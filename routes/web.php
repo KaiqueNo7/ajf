@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\PropertiesController;
 use Illuminate\Support\Facades\Route;
@@ -10,8 +11,7 @@ Route::get('imovel/{name_property}/{id}', [indexController::class, 'show']);
 Route::post('/', [indexController::class, 'sendMail'])->name('sendmail');
 
 Route::middleware(['auth'])->group(function () {
-    //Route::get('dashboard', [DashboardController::class, 'show'])->name('dashboard');
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'show'])->name('dashboard');
     Route::view('profile', 'profile')->name('profile');
 
     Route::controller(PropertiesController::class)->group(function () {
