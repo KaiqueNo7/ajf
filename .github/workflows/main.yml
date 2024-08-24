@@ -43,3 +43,7 @@ jobs:
           REMOTE_USER: ${{ vars.REMOTE_USER }}
           REMOTE_PORT: ${{ vars.REMOTE_PORT }}
           TARGET: ${{ vars.TARGET }}
+          
+      - name: Rodar migrate
+        run: |
+            ssh -o StrictHostKeyChecking=no ${{ vars.REMOTE_USER }}@${{ vars.REMOTE_HOST }} -p ${{ vars.REMOTE_PORT }} "cd ${{ vars.TARGET }} && php artisan migrate --force"
