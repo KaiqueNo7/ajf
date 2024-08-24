@@ -8,16 +8,20 @@ use Livewire\Component;
 class FormAdditionalInformation extends Component
 {
     public $additionalInformation;
-    public $propertyId;
+    public $property_id;
+    public $text;
 
-    public function createInformation($id)
+    public function create()
     {
-        AdditionalInformation::create([
-            'property_id' => $id,
-            'text' => $this->additionalInformation,
+
+        $validated = $this->validate([ 
+            'property_id' => 'required',
+            'text' => 'required|min:3',
         ]);
 
-        $this->additionalInformation = '';
+        AdditionalInformation::create($validated);
+
+        $this->text = '';
 
         flash()->success('Informação adicionada com sucesso.');
     }
@@ -44,7 +48,7 @@ class FormAdditionalInformation extends Component
 
     public function render()
     {
-        $additionalInformations = AdditionalInformation::where('property_id', $this->propertyId)->get();
+        $additionalInformations = AdditionalInformation::where('property_id', $this->property_id)->get();
 
         return view('livewire.form-additional-information', ['additionalInformations' => $additionalInformations]);
     }

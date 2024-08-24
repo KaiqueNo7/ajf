@@ -43,7 +43,7 @@ class indexController extends Controller
         }
 
         $additionalInformation = AdditionalInformation::where('property_id', $id)->get();
-        $photos = Photos::where('property_id', $id)->get();
+        $photos = Photos::where('property_id', $id)->orderBy('order')->get();
 
         return view('property', [
             'property' => $property, 

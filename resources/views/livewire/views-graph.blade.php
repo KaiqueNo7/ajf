@@ -6,14 +6,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <script>
-    var datas = @json($views);
-    var labels = [];
-    var views = [];
-
-    datas.forEach(function(data) {
-        labels.push(data.name);
-        views.push(data.views_count);
-    });
+    var labels = @json($properties);
+    var views = @json($views);
 
     const ctx = document.getElementById('myChart');
 

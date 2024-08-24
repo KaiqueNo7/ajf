@@ -13,5 +13,6 @@ class Photos extends Model
         'property_id',
         'photo',
         'type',
+        'order',
     ];
 }

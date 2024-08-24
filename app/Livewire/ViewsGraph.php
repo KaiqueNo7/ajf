@@ -9,11 +9,18 @@ class ViewsGraph extends Component
 {
     public function render()
     {
+        $properties = Property::withCount('views')
+            ->where('visibility', '=', 1)
+            ->orderByDesc('name')
+            ->get()
+            ->pluck('name');
+
         $views = Property::withCount('views')
             ->where('visibility', '=', 1)
             ->orderByDesc('name')
-            ->get();
+            ->get()
+            ->pluck('views_count');
 
-        return view('livewire.views-graph', compact('views'));
+        return view('livewire.views-graph', compact('properties'), compact('views'));
     }
 }

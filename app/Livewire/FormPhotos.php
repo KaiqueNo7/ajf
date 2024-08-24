@@ -33,6 +33,15 @@ class FormPhotos extends Component
         flash()->success('Fotos incluídas com sucesso.');
     }
 
+    public function updateOrder($orderedIds)
+    {
+        foreach ($orderedIds as $index => $id) {
+            Photos::where('id', $id)->update(['order' => $index + 1]);
+        }
+
+        flash()->success('Ordem atualizada com sucesso.');
+    }
+
     public function delete($id)
     {
         $photo = Photos::find($id);
@@ -52,7 +61,7 @@ class FormPhotos extends Component
 
     public function render()
     {
-        $photosProperty = Photos::where('property_id', $this->propertyId)->get();
+        $photosProperty = Photos::where('property_id', $this->propertyId)->orderBy('order')->get();
 
         return view('livewire.form-photos', ['photosProperty' => $photosProperty]);
     }
