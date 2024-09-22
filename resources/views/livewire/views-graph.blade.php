@@ -4,49 +4,63 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <script>
+
+<script>
     var labels = @json($properties);
     var views = @json($views);
 
-    const ctx = document.getElementById('myChart');
+    var chart;
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'Visualizações',
-                    data: views,
-                    backgroundColor: '#fb923c',
-                },
-            ]
-        },
-        options: {
-            responsive: true,  // Tornar o gráfico responsivo
-            maintainAspectRatio: false,  // Permitir que o gráfico seja redimensionado sem manter a proporção
-            scales: {
-                x: {
-                    ticks: {
-                        color: 'white' // Cor das labels no eixo X
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: 'white' // Cor das labels no eixo Y
-                    }
-                }
+    function destroyChartIfExists() {
+        if (chart) {
+            chart.destroy();
+        }
+    }
+
+    function createChart() {
+        const ctx = document.getElementById('myChart');
+
+        destroyChartIfExists();
+
+        chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Visualizações',
+                        data: views,
+                        backgroundColor: '#fb923c',
+                    },
+                ]
             },
-            plugins: {
-                legend: {
-                    labels: {
-                        color: 'white' // Cor do texto da legenda
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: {
+                            color: 'white'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: 'white'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white'
+                        }
                     }
                 }
             }
-        }
-    });
-    </script>
+        });
+    }
+
+    createChart();
+</script>
 </div>
 

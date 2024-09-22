@@ -7,20 +7,22 @@ use Livewire\Component;
 
 class ViewsGraph extends Component
 {
+    public $properties;
+    public $views;
+
+    public function mount() 
+    {
+        $propertiesData = Property::withCount('views')
+        ->where('visibility', '=', 1)
+        ->orderByDesc('name')
+        ->get();
+
+        $this->properties = $propertiesData->pluck('name');
+        $this->views = $propertiesData->pluck('views_count');
+    }
+
     public function render()
     {
-        $properties = Property::withCount('views')
-            ->where('visibility', '=', 1)
-            ->orderByDesc('name')
-            ->get()
-            ->pluck('name');
-
-        $views = Property::withCount('views')
-            ->where('visibility', '=', 1)
-            ->orderByDesc('name')
-            ->get()
-            ->pluck('views_count');
-
-        return view('livewire.views-graph', compact('properties'), compact('views'));
+        return view('livewire.views-graph');
     }
 }
