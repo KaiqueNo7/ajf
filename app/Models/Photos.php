@@ -15,4 +15,13 @@ class Photos extends Model
         'type',
         'order',
     ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'order' => 0,
+    ];
 }

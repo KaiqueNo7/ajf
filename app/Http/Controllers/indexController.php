@@ -17,7 +17,7 @@ class indexController extends Controller
 
     public function index(): View
     {
-        $properties = Property::where('visibility', true)->get();
+        $properties = Property::where('visibility', true)->orderBy('updated_at', 'desc')->get();
 
         return view('index', ['properties' => $properties]);
     }
