@@ -7,7 +7,7 @@
         <h1 class="text-2xl"><i class="fa-solid fa-circle-info text-orange-500"></i> Conheça <span class="text-orange-500">{{ $property->name }}</span></h1>
         <ul>
             @foreach ($additionalInformation as $information)
-                <li class="my-4 text-gray-600 font-light"><i class="fa-solid fa-check"></i> {{ $information->text }}</li>
+                <li class="my-4 text-gray-950"><i class="fa-solid fa-check text-orange-500"></i> {{ $information->text }}</li>
             @endforeach
         </ul>
     </div>
