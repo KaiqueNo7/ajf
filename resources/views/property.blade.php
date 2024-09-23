@@ -82,8 +82,9 @@
 
             var iframe = document.createElement('iframe');
             iframe.width = '100%';
-            iframe.height = '450';
+            iframe.height = '400';
             iframe.style.border = '0';
+            iframe.style.borderRadius  = '1em';
             iframe.src = url;
             iframe.allowFullscreen = true;
 
