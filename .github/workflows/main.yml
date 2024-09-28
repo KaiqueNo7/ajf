@@ -32,6 +32,12 @@ jobs:
           find . -type f -not -path "./vendor/*" -exec chmod 664 {} \;
           find . -type d -not -path "./vendor/*" -exec chmod 775 {} \;
 
+      - name: Rodar composer update no servidor
+        run: |
+          ${{ secrets.SERVER_SSH_KEY }} 
+          ${{ secrets.SSH_PASSWORD }} 
+          cd domains/ajfimoveis.com.br/public_html && composer update
+
       - name: Hostinger Deployment
         uses: easingthemes/ssh-deploy@main
       
