@@ -34,9 +34,13 @@ jobs:
 
       - name: Rodar composer update no servidor
         run: |
-          ${{ secrets.SERVER_SSH_KEY }} 
-          ${{ secrets.SSH_PASSWORD }} 
-          cd domains/ajfimoveis.com.br/public_html && composer update
+          ssh -o StrictHostKeyChecking=no -p ${{ vars.REMOTE_PORT }} ${{ vars.REMOTE_USER }}@${{ vars.REMOTE_HOST }} << 'EOF'
+          cd domains/ajfimoveis.com.br/public_html
+          composer update
+          EOF
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_auth.sock
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
 
       - name: Hostinger Deployment
         uses: easingthemes/ssh-deploy@main
