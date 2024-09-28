@@ -3,34 +3,18 @@ name: ajfimoveis.com.br deployment
 on: 
   push:
     branches: [master]
-  pull_request:
-    branches: [master]
-  workflow_dispatch:
 
 jobs:
   deploy-production:
+
     runs-on: ubuntu-latest 
-    container:
-      image: lorisleiva/laravel-docker:latest
+    
     environment:
       name: production
       url: ${{ vars.URL }}
     steps:
       - name: Checkout do código
         uses: actions/checkout@v2
-
-      - name: Inicializar SSH
-        run: |
-          eval $(ssh-agent -s)
-          echo "${{ secrets.SERVER_SSH_KEY }}" | tr -d '\r' | ssh-add - > /dev/null
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-          [[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-
-      - name: Alterar permissões de arquivos
-        run: |
-          find . -type f -not -path "./vendor/*" -exec chmod 664 {} \;
-          find . -type d -not -path "./vendor/*" -exec chmod 775 {} \;
 
       - name: Hostinger Deployment
         uses: easingthemes/ssh-deploy@main
@@ -43,6 +27,21 @@ jobs:
           REMOTE_USER: ${{ vars.REMOTE_USER }}
           REMOTE_PORT: ${{ vars.REMOTE_PORT }}
           TARGET: ${{ vars.TARGET }}
-          SCRIPT_AFTER:
+          SCRIPT_AFTER: |
             cd domains/ajfimoveis.com.br/public_html
-            composer update
+            
+            # Atualiza as dependências
+            if composer update; then
+              echo "Composer update succeeded."
+            else
+              echo "Composer update failed."
+              exit 1  # Encerra o script se falhar
+            fi
+
+            # Executa as migrações
+            if php artisan migrate; then
+              echo "Migrations ran successfully."
+            else
+              echo "Migrations failed."
+              exit 1  # Encerra o script se falhar
+            fi
