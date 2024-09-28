@@ -32,16 +32,6 @@ jobs:
           find . -type f -not -path "./vendor/*" -exec chmod 664 {} \;
           find . -type d -not -path "./vendor/*" -exec chmod 775 {} \;
 
-      - name: Rodar composer update no servidor
-        run: |
-          ssh -o StrictHostKeyChecking=no -p ${{ vars.REMOTE_PORT }} ${{ vars.REMOTE_USER }}@${{ vars.REMOTE_HOST }} << 'EOF'
-          cd domains/ajfimoveis.com.br/public_html
-          composer update
-          EOF
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_auth.sock
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-
       - name: Hostinger Deployment
         uses: easingthemes/ssh-deploy@main
       
@@ -53,3 +43,6 @@ jobs:
           REMOTE_USER: ${{ vars.REMOTE_USER }}
           REMOTE_PORT: ${{ vars.REMOTE_PORT }}
           TARGET: ${{ vars.TARGET }}
+          SCRIPT_AFTER:
+            cd domains/ajfimoveis.com.br/public_html
+            composer update
