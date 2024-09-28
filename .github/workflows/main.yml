@@ -31,7 +31,7 @@ jobs:
             cd domains/ajfimoveis.com.br/public_html
             
             # Atualiza as dependências
-            if composer update; then
+            if composer2 update; then
               echo "Composer update succeeded."
             else
               echo "Composer update failed."
