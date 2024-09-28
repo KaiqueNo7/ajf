@@ -14,7 +14,7 @@ jobs:
       url: ${{ vars.URL }}
     steps:
       - name: Checkout do código
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Hostinger Deployment
         uses: easingthemes/ssh-deploy@main
@@ -30,18 +30,24 @@ jobs:
           SCRIPT_AFTER: |
             cd domains/ajfimoveis.com.br/public_html
             
-            # Atualiza as dependências
-            if composer2 update; then
-              echo "Composer update succeeded."
-            else
-              echo "Composer update failed."
-              exit 1  # Encerra o script se falhar
-            fi
+            # Instala as dependências PHP
+            composer install --no-dev --no-interaction --no-progress --prefer-dist --a
 
-            # Executa as migrações
-            if php artisan migrate; then
-              echo "Migrations ran successfully."
-            else
-              echo "Migrations failed."
-              exit 1  # Encerra o script se falhar
-            fi
+             # Instala as dependências JS
+            rm -rf node_modules/
+            
+            npm install
+
+            npm run build
+
+            # Atualiza o cache da aplicação
+            php artisan optimize
+
+            # Atualiza as dependências
+            composer2 update
+
+            # Realiza as migrações
+            php artisan migrate --force
+
+            # Finalzia as atualizações
+            php artisan up 
