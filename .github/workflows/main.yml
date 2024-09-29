@@ -23,14 +23,17 @@ jobs:
           username: ${{ vars.REMOTE_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ vars.REMOTE_PORT }}
+          script_stop: true
           script: |
             cd domains/ajfimoveis.com.br/public_html
 
-            echo "Entrou no diretório corretamente"
-            # LOGAR ALGUMA COISA PARA TESTAR
-            # copy .env.testing .env
+            copy .env.testing .env
 
-            # copy .env.production .env
+            php artisan migrate
+
+            php artisan test
+
+            copy .env.production .env
 
       - name: Hostinger Deployment
         uses: easingthemes/ssh-deploy@main
