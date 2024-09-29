@@ -39,7 +39,6 @@ jobs:
           script: |
             cd domains/ajfimoveis.com.br/public_html
             php artisan test --stop-on-failure
-            php artisan migrate:rollback --force
 
       - name: Configurando ambiente de producao
         uses: appleboy/ssh-action@v1.0.3
