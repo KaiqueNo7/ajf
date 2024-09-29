@@ -31,12 +31,12 @@ jobs:
             cd domains/ajfimoveis.com.br/public_html
             
             # Instala as dependências PHP
-            composer install --no-dev --no-interaction --no-progress --prefer-dist --a
+            composer2 install --no-dev --no-interaction --no-progress --prefer-dist
 
-             # Instala as dependências JS
+            # Instala as dependências JS
             rm -rf node_modules/
             
-            npm install
+            npm install --y
 
             npm run build
 
