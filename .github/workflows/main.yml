@@ -22,6 +22,7 @@ jobs:
           host: ${{ vars.REMOTE_HOST }}
           username: ${{ vars.REMOTE_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ vars.REMOTE_PORT }}
           script: |
             cd domains/ajfimoveis.com.br/public_html
 
