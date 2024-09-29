@@ -16,6 +16,21 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v4
 
+      - name: Configurando ambiente de teste
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ vars.REMOTE_HOST }}
+          username: ${{ vars.REMOTE_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd domains/ajfimoveis.com.br/public_html
+
+            echo "Entrou no diretório corretamente"
+            # LOGAR ALGUMA COISA PARA TESTAR
+            # copy .env.testing .env
+
+            # copy .env.production .env
+
       - name: Hostinger Deployment
         uses: easingthemes/ssh-deploy@main
       
