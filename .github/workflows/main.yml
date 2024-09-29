@@ -27,13 +27,13 @@ jobs:
           script: |
             cd domains/ajfimoveis.com.br/public_html
 
-            copy .env.testing .env
+            cp .env.testing .env
 
             php artisan migrate
 
             php artisan test
 
-            copy .env.production .env
+            cp .env.production .env
 
       - name: Hostinger Deployment
         uses: easingthemes/ssh-deploy@main
