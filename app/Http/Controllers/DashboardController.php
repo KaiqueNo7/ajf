@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Property;
 use App\Models\Views;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class DashboardController
 {
     public function show(): View
     {
@@ -19,6 +18,10 @@ class DashboardController extends Controller
         ->orderByDesc('views_count')
         ->pluck('name')
         ->first();
+
+        if(!$moreViews){
+            $moreViews = 'Nenhum';
+        }
 
         $countViewsToday = Views::whereDate('created_at', today())->count();
 

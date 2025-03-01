@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Property;
 
-class PropertiesController extends Controller
+class PropertiesController
 {
     public function show()
     {

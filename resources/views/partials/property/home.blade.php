@@ -1,5 +1,5 @@
 <section class="w-full h-screen relative flex justify-start items-end px-5 py-10">
-    <img src="{{ asset('storage/' . $property->image) }}" alt="Rio de Janeiro" class="absolute w-full h-full left-0 top-0 object-cover z-0">
+    <img src="{{ asset('storage/' . $property->image) }}" alt="" class="absolute w-full h-full left-0 top-0 object-cover z-0">
     <div class="relative z-20">
         <h1 class="text-white text-5xl font-light">{{ $property->name }}</h1>
         <p class="text-white">{{ $property->project }}</p>

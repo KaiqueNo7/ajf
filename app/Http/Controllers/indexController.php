@@ -9,10 +9,9 @@ use App\Models\Property;
 use App\Models\Views;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Mail;
 
-class indexController extends Controller
+class indexController
 {   
 
     public function index(): View
