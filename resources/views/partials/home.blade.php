@@ -1,6 +1,6 @@
 @if(!empty($properties[0]))
     <section class="w-full h-screen relative flex justify-start items-end px-12 py-10 pb-5">
-        <div class="pt-28 swiper w-full h-full" id="slide-home">
+        <div class="swiper w-full h-full" id="slide-home">
             <div class="swiper-wrapper h-full">
                 @foreach ($properties as $property)
                 <div class="swiper-slide">
