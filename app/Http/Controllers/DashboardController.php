@@ -14,12 +14,12 @@ class DashboardController
         $countViews = Views::count();
 
         $moreViews = Property::withCount('views')
-        ->where('visibility', '=', 1)
-        ->orderByDesc('views_count')
-        ->pluck('name')
-        ->first();
+            ->where('visibility', '=', 1)
+            ->orderByDesc('views_count')
+            ->pluck('name')
+            ->first();
 
-        if(!$moreViews){
+        if (! $moreViews) {
             $moreViews = 'Nenhum';
         }
 

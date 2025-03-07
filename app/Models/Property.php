@@ -22,7 +22,7 @@ class Property extends Model
         'address',
         'visibility',
     ];
-    
+
     protected $attributes = [
         'image' => '',
         'visibility' => false,
@@ -31,7 +31,7 @@ class Property extends Model
     public function mainPhoto(): BelongsTo
     {
         return $this->belongsTo(Photos::class, 'id', 'property_id')
-        ->where('type', 0);
+            ->where('type', 0);
     }
 
     public function additionalInformation(): BelongsTo

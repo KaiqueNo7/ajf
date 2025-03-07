@@ -19,7 +19,7 @@ class AdditionalInformationFactory extends Factory
     {
         return [
             'property_id' => Property::inRandomOrder()->first(),
-            'text' => fake()->text()
+            'text' => fake()->text(),
         ];
     }
 }

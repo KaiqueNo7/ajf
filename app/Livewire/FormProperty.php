@@ -13,18 +13,29 @@ class FormProperty extends Component
     use WithFileUploads;
 
     public $name;
+
     public $status;
 
     public $project;
+
     public $plant;
+
     public $size;
+
     public $bedrooms;
+
     public $bathrooms;
+
     public $address;
+
     public $propertyId;
+
     public $formAction = 'create';
+
     public $action = 'Incluir';
+
     public $visibility = false;
+
     public $allStatus = ['Lançamento', 'Pronto', 'Finalizando obras', 'Novas unidades'];
 
     #[Validate(['photo' => 'image|max:1024'])]
@@ -35,7 +46,7 @@ class FormProperty extends Component
 
     public function create()
     {
-        $validated = $this->validate([ 
+        $validated = $this->validate([
             'name' => 'required|min:3',
             'status' => 'required|min:3',
             'project' => 'required|min:3',
@@ -48,13 +59,14 @@ class FormProperty extends Component
 
         $property = Property::create($validated);
 
-        if($property){
+        if ($property) {
             flash()->success('Imóvel adicionado com sucesso.');
-            return redirect()->to('edit/' . $property->id);
+
+            return redirect()->to('edit/'.$property->id);
         }
 
         flash()->error('Erro ao adicionar imóvel.');
-    }    
+    }
 
     public function update($id)
     {
@@ -69,7 +81,7 @@ class FormProperty extends Component
             'bedrooms' => $this->bedrooms,
             'bathrooms' => $this->bathrooms,
             'address' => $this->address,
-        ]); 
+        ]);
 
         flash()->success('Informações atualizadas com sucesso.');
     }
@@ -79,7 +91,7 @@ class FormProperty extends Component
         $property = Property::find($id);
 
         $property->update([
-            'visibility' => !$property->visibility,
+            'visibility' => ! $property->visibility,
         ]);
 
         flash()->success('Visualização alterada com sucesso.');
@@ -94,7 +106,7 @@ class FormProperty extends Component
         $property = Property::find($id);
 
         $property->update([
-            'image' => $this->sendPhoto->store('property/' . strtolower($property->name), 'public'),
+            'image' => $this->sendPhoto->store('property/'.strtolower($property->name), 'public'),
         ]);
 
         flash()->success('Foto adicionada com sucesso.');
@@ -107,8 +119,8 @@ class FormProperty extends Component
         $image_path = $property->image;
 
         $image_exists = Storage::disk('public')->exists($image_path);
-        
-        if($image_exists){
+
+        if ($image_exists) {
             Storage::disk('public')->delete($image_path);
         }
 
@@ -121,7 +133,7 @@ class FormProperty extends Component
 
     public function render()
     {
-        if(!empty($this->propertyId)){
+        if (! empty($this->propertyId)) {
             $property = Property::where('id', $this->propertyId)->first();
 
             $this->name = $property->name;
@@ -134,10 +146,10 @@ class FormProperty extends Component
             $this->address = $property->address;
             $this->visibility = $property->visibility;
             $this->photo = $property->image;
-            $this->formAction = 'update(' . $property->id . ')';
+            $this->formAction = 'update('.$property->id.')';
             $this->action = 'Salvar';
         }
-        
+
         return view('livewire.form-property');
     }
 }

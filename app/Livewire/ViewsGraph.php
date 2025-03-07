@@ -8,14 +8,15 @@ use Livewire\Component;
 class ViewsGraph extends Component
 {
     public $properties;
+
     public $views;
 
-    public function mount() 
+    public function mount()
     {
         $propertiesData = Property::withCount('views')
-        ->where('visibility', '=', 1)
-        ->orderByDesc('name')
-        ->get();
+            ->where('visibility', '=', 1)
+            ->orderByDesc('name')
+            ->get();
 
         $this->properties = $propertiesData->pluck('name');
         $this->views = $propertiesData->pluck('views_count');

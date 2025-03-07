@@ -12,8 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class indexController
-{   
-
+{
     public function index(): View
     {
         $properties = Property::where('visibility', true)->orderBy('updated_at', 'desc')->get();
@@ -26,7 +25,7 @@ class indexController
         return view('thanks');
     }
 
-    public function show(String $name, Int $id): View
+    public function show(string $name, int $id): View
     {
         $property = Property::where('id', $id)->first();
 
@@ -34,7 +33,7 @@ class indexController
 
         $existingView = Views::where('session_id', $sessionId)->where('property_id', $property->id)->first();
 
-        if (!$existingView) {
+        if (! $existingView) {
             Views::create([
                 'session_id' => $sessionId,
                 'property_id' => $property->id,
@@ -45,7 +44,7 @@ class indexController
         $photos = Photos::where('property_id', $id)->orderBy('order')->get();
 
         return view('property', [
-            'property' => $property, 
+            'property' => $property,
             'additionalInformation' => $additionalInformation,
             'photos' => $photos,
         ]);

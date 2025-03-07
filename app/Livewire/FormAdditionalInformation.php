@@ -8,13 +8,15 @@ use Livewire\Component;
 class FormAdditionalInformation extends Component
 {
     public $additionalInformation;
+
     public $property_id;
+
     public $text;
 
     public function create()
     {
 
-        $validated = $this->validate([ 
+        $validated = $this->validate([
             'property_id' => 'required',
             'text' => 'required|min:3',
         ]);
@@ -36,7 +38,7 @@ class FormAdditionalInformation extends Component
 
         flash()->success('Informação atualizada com sucesso.');
     }
-    
+
     public function delete($id)
     {
         $information = AdditionalInformation::find($id);

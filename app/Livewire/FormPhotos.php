@@ -25,9 +25,9 @@ class FormPhotos extends Component
         foreach ($this->photos as $photo) {
             Photos::create([
                 'property_id' => $id,
-                'photo' => $photo->store('property/' . strtolower($property->name), 'public'),
+                'photo' => $photo->store('property/'.strtolower($property->name), 'public'),
                 'type' => 1,
-            ]);   
+            ]);
         }
 
         flash()->success('Fotos incluídas com sucesso.');
@@ -49,8 +49,8 @@ class FormPhotos extends Component
         $image_path = $photo->photo;
 
         $image_exists = Storage::disk('public')->exists($image_path);
-        
-        if($image_exists){
+
+        if ($image_exists) {
             Storage::disk('public')->delete($image_path);
         }
 
