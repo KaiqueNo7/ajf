@@ -10,7 +10,7 @@
                 <h4 class="mb-2">{{ $property->name }}</h4>
                 <p class="font-medium">{{ $property->size }} m²</p>
                 <p class="font-medium mb-2">{{ $property->bedrooms }}</p>
-                <x-button-link href="imovel/{{ normalizeString($property->name) }}/{{ $property->id }}">Saiba mais</x-button-link>
+                <x-button-link href="{{ $property->url }}">Saiba mais</x-button-link>
               </div>
             </div>
           @empty

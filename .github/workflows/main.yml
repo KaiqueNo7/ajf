@@ -28,6 +28,8 @@ jobs:
             cd domains/ajfimoveis.com.br/public_html
             # Instala as dependências PHP
             composer2 install --no-dev --no-interaction --no-progress --prefer-dist
+            # Atualiza o autoload do Composer
+            composer2 dump-autoload
             # Instala as dependências JS
             rm -rf node_modules/
             npm install --y

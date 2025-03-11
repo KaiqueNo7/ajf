@@ -13,7 +13,7 @@
                         <div class="absolute bottom-10 left-10 z-20 text-white">
                             <h1 class="text-5xl font-light">{{ $property->name }}</h1>
                             <p class="mt-2 mb-6">{{ $property->project }}</p>
-                            <x-button-link class="mt-2" href="imovel/{{ normalizeString($property->name) }}/{{ $property->id }}">Saiba mais</x-button-link>
+                            <x-button-link class="mt-2" href="{{ $property->url }}">Saiba mais</x-button-link>
                         </div>
                     </div>
                 </div>
