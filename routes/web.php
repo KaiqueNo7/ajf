@@ -3,10 +3,13 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\PropertiesController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [indexController::class, 'index'])->name('home');
 Route::get('/{property:name}', [indexController::class, 'show']);
+
+Route::get('/conf/sitemap.xml', [SitemapController::class, 'index']);
 
 Route::prefix('admin')->group(function () {
     Route::middleware(['auth'])->group(function () {
