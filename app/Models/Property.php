@@ -30,10 +30,33 @@ class Property extends Model
         'visibility' => false,
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'name';
+    }
+
+    public function resolveRouteBinding($value, $field = null)
+    {
+        if (is_numeric($value)) {
+            return $this->where('id', $value)->firstOrFail();
+        }
+
+        return $this->whereRaw("LOWER(REPLACE(name, ' ', '-')) = ?", [Str::lower($value)])->firstOrFail();
+    }
+
     public function url(): Attribute
     {
         return Attribute::make(
-            get: fn () => url('imovel/'.Str::slug($this->name).'/'.$this->id),
+            get: fn () => url(Str::slug($this->name)),
+        );
+    }
+
+    public function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => Str::startsWith($this->image, ['http://', 'https://'])
+                ? $this->image
+                : asset('storage/'.$this->image),
         );
     }
 

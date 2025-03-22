@@ -4,7 +4,7 @@
       <div class="swiper-wrapper">
           @forelse ($properties as $property)
             <div class="swiper-slide min-h-128 rounded-xl group/item overflow-hidden">
-              <img src="{{ asset('storage/' . $property->image) }}" alt="Rio de Janeiro" class="absolute w-full h-full left-0 top-0 object-cover z-0 rounded-xl group-hover/item:scale-110 transition-all">
+              <img src="{{ $property->image_url }}" alt="Rio de Janeiro" class="absolute w-full h-full left-0 top-0 object-cover z-0 rounded-xl group-hover/item:scale-110 transition-all">
               <div class="absolute bottom-0 left-0 w-full z-10 h-96 bg-gradient-to-t from-slate-900 to-transparent rounded-xl"></div>  
               <div class="absolute bottom-5 left-0 w-full z-20 p-4 flex justify-end items-start text-white flex-col rounded-xl">
                 <h4 class="mb-2">{{ $property->name }}</h4>

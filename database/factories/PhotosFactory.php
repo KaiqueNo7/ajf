@@ -18,7 +18,7 @@ class PhotosFactory extends Factory
     public function definition(): array
     {
         return [
-            'photo' => fake()->image('public/storage/', 640, 480, null, false),
+            'photo' => 'https://picsum.photos/1024/768',
             'type' => 0,
             'property_id' => Property::inRandomOrder()->first(),
         ];

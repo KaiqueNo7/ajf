@@ -18,24 +18,18 @@ class PropertiesController
         return view('layouts.new-property', ['property' => '']);
     }
 
-    public function edit($id)
+    public function edit(Property $property)
     {
-        $property = Property::where('id', $id)->first();
-
         return view('layouts.new-property', ['property' => $property]);
     }
 
-    public function additionalInformation($id)
+    public function additionalInformation(Property $property)
     {
-        $property = Property::where('id', $id)->first();
-
         return view('layouts.additional-information', ['property' => $property]);
     }
 
-    public function photos($id)
+    public function photos(Property $property)
     {
-        $property = Property::where('id', $id)->first();
-
         return view('layouts.photos', ['property' => $property]);
     }
 }

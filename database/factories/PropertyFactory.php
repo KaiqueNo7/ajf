@@ -24,7 +24,8 @@ class PropertyFactory extends Factory
             'size' => fake()->buildingNumber(),
             'bedrooms' => fake()->word(),
             'bathrooms' => fake()->word(),
-            'image' => fake()->image('public/storage/', 640, 480, null, false),
+            'image' => 'https://picsum.photos/1024/768',
+            'visibility' => fake()->boolean(),
             'address' => fake()->address(),
             'maps' => fake()->url(),
         ];

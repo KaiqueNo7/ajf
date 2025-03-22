@@ -20,15 +20,8 @@ class indexController
         return view('index', ['properties' => $properties]);
     }
 
-    public function thanks(): View
+    public function show(Property $property): View
     {
-        return view('thanks');
-    }
-
-    public function show(string $name, int $id): View
-    {
-        $property = Property::where('id', $id)->first();
-
         $sessionId = session()->getId();
 
         $existingView = Views::where('session_id', $sessionId)->where('property_id', $property->id)->first();
@@ -40,22 +33,13 @@ class indexController
             ]);
         }
 
-        $additionalInformation = AdditionalInformation::where('property_id', $id)->get();
-        $photos = Photos::where('property_id', $id)->orderBy('order')->get();
+        $additionalInformation = AdditionalInformation::where('property_id', $property->id)->get();
+        $photos = Photos::where('property_id', $property->id)->orderBy('order')->get();
 
         return view('property', [
             'property' => $property,
             'additionalInformation' => $additionalInformation,
             'photos' => $photos,
         ]);
-    }
-
-    public function sendMail(Request $request)
-    {
-        $dados = $request->all();
-
-        Mail::to('contato@ajfimoveis.com')->send(new LeadClient($dados));
-
-        return redirect()->route('thanks')->with('success', 'Mensagem enviada com sucesso!');
     }
 }
